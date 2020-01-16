@@ -10,10 +10,10 @@ Two variables are required:
 ... ...
 
 models:
-  tap_gitlab:
+  tap_facebook:
 
     ... ...
 
     vars:
-      schema:             'tap_gitlab'        # the schema where the raw gitlab tables are located
+      schema:             'tap_facebook'        # the schema where the raw facebook tables are located
 ```

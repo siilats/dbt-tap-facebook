@@ -16,4 +16,4 @@ models:
       materialized: table
 
     vars:
-      schema:                     tap_facebook # the schema where the raw Facebook Ads tables are located
+      schema:                # the schema where the raw Facebook Ads tables are located
