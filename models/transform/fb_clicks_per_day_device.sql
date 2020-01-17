@@ -7,13 +7,14 @@ WITH ads_insights as (
 
 select
 
+  account_name,
   campaign_name,
   adset_name,
   ad_name,
   insights_date,
   impression_device as device,
 
-  CONCAT (insights_date, ' | ', impression_device, ' | ', ad_name, ' | ', adset_name, ' | ', campaign_name) as label, 
+  CONCAT (insights_date, ' | ', impression_device, ' | ', ad_name, ' | ', adset_name, ' | ', campaign_name, ' | ', account_name) as label, 
   
   SUM(clicks) as clicks, 
   
@@ -25,6 +26,7 @@ from ads_insights
 
 group by 
 
+  account_name,
   campaign_name,
   adset_name,
   ad_name,
@@ -38,4 +40,5 @@ order by
   impression_device, 
   ad_name, 
   adset_name,
-  campaign_name
+  campaign_name,
+  account_name
