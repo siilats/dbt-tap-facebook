@@ -7,6 +7,7 @@ with ads_insights as (
 
 select
 
+  account_name,
   campaign_name,
   adset_name,
   ad_name,
@@ -23,7 +24,7 @@ select
       -- Get the end of the week
       (date_trunc('week', MIN(insights_date)) + '6 days')::date, 
     '] | ', 
-    ad_name, ' | ', adset_name, ' | ', campaign_name
+    ad_name, ' | ', adset_name, ' | ', campaign_name, ' | ', account_name
   ) as label, 
   
   SUM(clicks) as clicks, 
@@ -36,6 +37,7 @@ from ads_insights
 
 group by 
 
+  account_name,
   campaign_name,
   adset_name,
   ad_name,
@@ -49,4 +51,5 @@ order by
   insights_week,
   ad_name, 
   adset_name,
-  campaign_name
+  campaign_name,
+  account_name
