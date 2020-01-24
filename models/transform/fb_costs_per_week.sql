@@ -31,7 +31,10 @@ select
   
   round((SUM(spend) / NULLIF(SUM(impressions), 0))  * 1000, 2) as cpm,
 
-  round(SUM(spend) / NULLIF(SUM(clicks), 0), 2) as cpc
+  round(SUM(spend) / NULLIF(SUM(clicks), 0), 2) as cpc,
+
+  -- Cost Per Result: Spend / Results
+  round(SUM(spend) / NULLIF(SUM(results), 0), 2) as cost_per_result
 
 from ads_insights
 

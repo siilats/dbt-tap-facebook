@@ -24,6 +24,11 @@ select
 
   round(spend / NULLIF(clicks, 0), 2) as cpc,
 
+  results,
+
+  -- Cost Per Result: Spend / Results
+  round(spend / NULLIF(results, 0), 2) as cost_per_result,
+
   spend as spend
 
 from ads_insights

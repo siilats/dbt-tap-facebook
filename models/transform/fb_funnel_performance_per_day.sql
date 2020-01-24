@@ -21,7 +21,12 @@ select
   round(1.0 * impressions / NULLIF(reach, 0), 2) as frequency,
 
   clicks, 
-  round((1.0 * clicks / NULLIF(impressions, 0))  * 100, 2) as ctr
+  round((1.0 * clicks / NULLIF(impressions, 0))  * 100, 2) as ctr,
+
+  results,
+  
+  -- Result Rate from Click: Results / Click
+  round(1.0 * results / NULLIF(clicks, 0), 2) as results_per_click
 
 from ads_insights
 
