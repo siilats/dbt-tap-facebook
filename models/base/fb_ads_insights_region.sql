@@ -47,6 +47,39 @@ renamed as (
         canvas_avg_view_percent as canvas_avg_view_percent,
         canvas_avg_view_time as canvas_avg_view_time,
 
+        coalesce(
+        ( 
+            SELECT 
+                SUM((action_elements::json->>'value')::numeric)
+            FROM 
+                jsonb_array_elements(actions) action_elements
+            WHERE
+                case
+                    when objective = 'LINK_CLICKS'
+                        then action_elements::json->>'action_type' = 'link_click'
+                    when objective = 'PAGE_LIKES'
+                        then action_elements::json->>'action_type' = 'like'
+                    when objective = 'POST_ENGAGEMENT'
+                        then action_elements::json->>'action_type' = 'post_engagement'
+                    when objective = 'APP_INSTALLS'
+                        -- app_install, mobile_app_install, omni_app_install
+                        then action_elements::json->>'action_type' like '%app_install'
+                    when objective = 'EVENT_RESPONSES'
+                        then action_elements::json->>'action_type' = 'rsvp'
+                    when objective = 'CONVERSIONS'
+                        -- offsite_conversion* and onsite_conversion*
+                        then action_elements::json->>'action_type' like '%_conversion%'
+                    when objective = 'VIDEO_VIEWS'
+                        then action_elements::json->>'action_type' = 'video_view'
+                    when objective = 'LEAD_GENERATION'
+                        then action_elements::json->>'action_type' = 'lead'
+                    when objective = 'MESSAGES'
+                        then action_elements::json->>'action_type' = 'onsite_conversion.messaging_conversation_started_7d'
+                    else action_elements::json->>'action_type' = 
+                         substring(lower(objective) from 1 for length(objective) - 1)
+                end      
+        ), 0.0) AS results,
+
         nullif(objective,'') as objective,
 
         -- Date parts for easy grouping 
