@@ -27,11 +27,10 @@ select
     ad_name, ' | ', adset_name, ' | ', campaign_name, ' | ', account_name
   ) as label, 
   
-  SUM(spend) as spend, 
+  SUM(results) as results,
   
-  round((SUM(spend) / NULLIF(SUM(impressions), 0))  * 1000, 2) as cpm,
-
-  round(SUM(spend) / NULLIF(SUM(clicks), 0), 2) as cpc,
+  -- Result Rate from Click: Results / Click
+  round(SUM(results) / NULLIF(SUM(clicks), 0), 2) as results_per_click,
 
   -- Cost Per Result: Spend / Results
   round(SUM(spend) / NULLIF(SUM(results), 0), 2) as cost_per_result
