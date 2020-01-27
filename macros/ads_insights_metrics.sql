@@ -52,6 +52,34 @@
 
         nullif(objective,'') as objective,
 
+        -- Extract various actions as metrics
+        {{ tap_facebook.action_metric('link_click',         'actions_link_clicks') }},
+        {{ tap_facebook.action_metric('like',               'actions_page_likes') }},
+        {{ tap_facebook.action_metric('post_engagement',    'actions_post_engagements') }},
+        {{ tap_facebook.action_metric('post_reaction',      'actions_post_reactions') }},
+        {{ tap_facebook.action_metric('comment',            'actions_post_comments') }},
+        {{ tap_facebook.action_metric('post',               'actions_post_shares') }},
+        {{ tap_facebook.action_metric('onsite_conversion.post_save', 'actions_post_saves') }},
+        {{ tap_facebook.action_metric('app_install',        'actions_app_installs') }},
+        {{ tap_facebook.action_metric('mobile_app_install', 'actions_mobile_app_installs') }},
+        {{ tap_facebook.action_metric('omni_app_install',   'actions_omni_app_installs') }},
+        {{ tap_facebook.action_metric('rsvp',               'actions_event_responses') }},
+
+        coalesce(
+        (
+            SELECT
+                SUM((action_elements::json->>'value')::numeric)
+            FROM
+                jsonb_array_elements(actions) action_elements
+            WHERE action_elements::json->>'action_type' like '%_conversion%'
+        ), 0.0) AS actions_conversions,
+
+
+        {{ tap_facebook.action_metric('video_view',         'actions_video_views') }},
+        {{ tap_facebook.action_metric('lead',               'actions_leads') }},
+        {{ tap_facebook.action_metric('onsite_conversion.messaging_conversation_started_7d', 'actions_messages') }},
+
+
         -- Date parts for easy grouping 
         EXTRACT(DAY FROM date_start::date) insights_day,
         EXTRACT(WEEK FROM date_start::date) insights_week,
