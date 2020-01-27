@@ -1,5 +1,5 @@
 name: 'tap_facebook'
-version: '0.0.2'
+version: '0.0.3'
 
 source-paths: ["models"]     # paths with source code to compile
 analysis-paths: ["analysis"] # path with analysis files which are compiled, but not run
@@ -7,6 +7,7 @@ target-path: "target"        # path for compiled code
 clean-targets: ["target"]    # directories removed by the clean task
 test-paths: ["test"]         # where to store test results
 data-paths: ["data"]         # load CSVs from this directory with `dbt seed`
+macro-paths: ["macros"]
 
 models:
   tap_facebook:
