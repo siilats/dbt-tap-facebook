@@ -14,9 +14,9 @@ select
   insights_date,
 
   -- Generate a nice label: "2020-01-16 | Ad name | Adset | Campaign"
-  CONCAT (insights_date, ' | ', ad_name, ' | ', adset_name, ' | ', campaign_name, ' | ', account_name) as label, 
-  
-  clicks, 
+  CONCAT (insights_date, ' | ', ad_name, ' | ', adset_name, ' | ', campaign_name, ' | ', account_name) as label,
+
+  clicks,
 
   round((1.0 * clicks / NULLIF(impressions, 0))  * 100, 2) as ctr,
 
@@ -26,9 +26,9 @@ from ads_insights
 
 where clicks > 0
 
-order by 
-  insights_date, 
-  ad_name, 
+order by
+  insights_date,
+  ad_name,
   adset_name,
   campaign_name,
   account_name

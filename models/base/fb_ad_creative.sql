@@ -11,7 +11,7 @@ renamed as (
         id as creative_id,
 
         account_id as account_id,
-        
+
         name as name,
         title as title,
         body as body,

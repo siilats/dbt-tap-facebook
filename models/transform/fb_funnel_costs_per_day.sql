@@ -14,13 +14,13 @@ select
   insights_date,
 
   -- Generate a nice label: "2020-01-16 | Ad name | Adset | Campaign"
-  CONCAT (insights_date, ' | ', ad_name, ' | ', adset_name, ' | ', campaign_name, ' | ', account_name) as label, 
-  
-  impressions, 
+  CONCAT (insights_date, ' | ', ad_name, ' | ', adset_name, ' | ', campaign_name, ' | ', account_name) as label,
+
+  impressions,
 
   round((spend / NULLIF(impressions, 0))  * 1000, 2) as cpm,
 
-  clicks, 
+  clicks,
 
   round(spend / NULLIF(clicks, 0), 2) as cpc,
 
@@ -33,9 +33,9 @@ select
 
 from ads_insights
 
-order by 
-  insights_date, 
-  ad_name, 
+order by
+  insights_date,
+  ad_name,
   adset_name,
   campaign_name,
   account_name

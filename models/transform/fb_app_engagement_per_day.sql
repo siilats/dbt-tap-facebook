@@ -14,8 +14,8 @@ select
   insights_date,
 
   -- Generate a nice label: "2020-01-16 | Ad name | Adset | Campaign"
-  CONCAT (insights_date, ' | ', ad_name, ' | ', adset_name, ' | ', campaign_name, ' | ', account_name) as label, 
-  
+  CONCAT (insights_date, ' | ', ad_name, ' | ', adset_name, ' | ', campaign_name, ' | ', account_name) as label,
+
   actions_mobile_app_installs as mobile_app_installs,
 
   actions_app_installs        as desktop_app_installs,
@@ -33,9 +33,9 @@ select
 
 from ads_insights
 
-order by 
-  insights_date, 
-  ad_name, 
+order by
+  insights_date,
+  ad_name,
   adset_name,
   campaign_name,
   account_name
