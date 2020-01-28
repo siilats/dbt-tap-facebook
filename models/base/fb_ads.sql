@@ -14,7 +14,7 @@ renamed as (
         nullif(campaign_id,'') as campaign_id,
         nullif(adset_id,'') as adset_id,
         nullif(creative__id,'') as creative_id,
-        
+
         name as name,
         status as status,
         effective_status as effective_status,

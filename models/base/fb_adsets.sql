@@ -12,7 +12,7 @@ renamed as (
 
         nullif(account_id,'') as account_id,
         nullif(campaign_id,'') as campaign_id,
-        
+
         name as name,
         effective_status as effective_status,
 

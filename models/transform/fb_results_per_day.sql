@@ -14,10 +14,10 @@ select
   insights_date,
 
   -- Generate a nice label: "2020-01-16 | Ad name | Adset | Campaign"
-  CONCAT (insights_date, ' | ', ad_name, ' | ', adset_name, ' | ', campaign_name, ' | ', account_name) as label, 
-  
+  CONCAT (insights_date, ' | ', ad_name, ' | ', adset_name, ' | ', campaign_name, ' | ', account_name) as label,
+
   results,
-  
+
   -- Result Rate from Click: Results / Click
   round(1.0 * results / NULLIF(clicks, 0), 2) as results_per_click,
 
@@ -26,9 +26,9 @@ select
 
 from ads_insights
 
-order by 
-  insights_date, 
-  ad_name, 
+order by
+  insights_date,
+  ad_name,
   adset_name,
   campaign_name,
   account_name

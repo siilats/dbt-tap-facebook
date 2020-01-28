@@ -13,7 +13,7 @@ renamed as (
         name as name,
 
         -- Targeting definitions
-        -- Adding them in case someone wants to analyze adsets 
+        -- Adding them in case someone wants to analyze adsets
         -- for the same campaign by targeting type
 
 		targeting__age_max as age_max,

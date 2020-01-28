@@ -11,7 +11,7 @@ renamed as (
         nullif(id,'') as campaign_id,
 
         nullif(account_id,'') as account_id,
-        
+
         name as name,
         effective_status as effective_status,
 
@@ -19,8 +19,8 @@ renamed as (
         objective as objective,
         spend_cap as spend_cap,
 
-        start_time as start_time,
-        
+        start_time as start_at,
+
         updated_time as updated_at
 
     from source

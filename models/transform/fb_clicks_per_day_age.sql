@@ -14,17 +14,17 @@ select
   insights_date,
   age,
 
-  CONCAT (insights_date, ' | ', age, ' | ', ad_name, ' | ', adset_name, ' | ', campaign_name, ' | ', account_name) as label, 
-  
-  SUM(clicks) as clicks, 
-  
+  CONCAT (insights_date, ' | ', age, ' | ', ad_name, ' | ', adset_name, ' | ', campaign_name, ' | ', account_name) as label,
+
+  SUM(clicks) as clicks,
+
   round((1.0 * SUM(clicks) / NULLIF(SUM(impressions), 0))  * 100, 2) as ctr,
 
   round(SUM(spend) / NULLIF(SUM(clicks), 0), 2) as cpc
 
 from ads_insights
 
-group by 
+group by
 
   account_name,
   campaign_name,
@@ -35,10 +35,10 @@ group by
 
 having SUM(clicks) > 0
 
-order by 
-  insights_date, 
-  age, 
-  ad_name, 
+order by
+  insights_date,
+  age,
+  ad_name,
   adset_name,
   campaign_name,
   account_name
