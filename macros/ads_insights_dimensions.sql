@@ -13,7 +13,7 @@
 
         nullif(ad_id,'') as ad_id,
         ad_name as ad_name,
-        
+
         -- We get the Ads Insights data per day with date_start == date_stop
         -- Just keep the date_start as the date this report is for
         date_start::date as insights_date
