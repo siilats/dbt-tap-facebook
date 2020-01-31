@@ -29,8 +29,8 @@ select
 
   SUM(results) as results,
 
-  -- Result Rate from Click: Results / Click
-  round(SUM(results) / NULLIF(SUM(clicks), 0), 2) as results_per_click,
+  -- Result Rate from Click: ((Results / Click) * 100) %
+  round((1.0 * SUM(results) / NULLIF(SUM(clicks), 0)) * 100, 2) as result_rate_from_clicks,
 
   -- Cost Per Result: Spend / Results
   round(SUM(spend) / NULLIF(SUM(results), 0), 2) as cost_per_result
