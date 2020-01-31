@@ -18,8 +18,8 @@ select
 
   results,
 
-  -- Result Rate from Click: Results / Click
-  round(1.0 * results / NULLIF(clicks, 0), 2) as results_per_click,
+  -- Result Rate from Click: ((Results / Click) * 100) %
+  round((1.0 * results / NULLIF(clicks, 0)) * 100, 2) as result_rate_from_clicks,
 
   -- Cost Per Result: Spend / Results
   round(spend / NULLIF(results, 0), 2) as cost_per_result
