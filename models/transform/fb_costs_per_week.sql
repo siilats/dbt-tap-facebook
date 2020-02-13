@@ -39,16 +39,15 @@ select
 from ads_insights
 
 group by
-
+  insights_iso_year,
+  insights_week,
   account_name,
   campaign_name,
   adset_name,
-  ad_name,
-  insights_year,
-  insights_week
+  ad_name
 
 order by
-  insights_year,
+  insights_iso_year,
   insights_week,
   ad_name,
   adset_name,

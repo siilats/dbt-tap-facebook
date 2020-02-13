@@ -83,23 +83,27 @@
         {{ tap_facebook.action_metric('lead',               'actions_leads') }},
         {{ tap_facebook.action_metric('onsite_conversion.messaging_conversation_started_7d', 'actions_messages') }},
 
-
-        -- Date parts for easy grouping
-        EXTRACT(DAY FROM date_start::date) insights_day,
-        EXTRACT(WEEK FROM date_start::date) insights_week,
-        EXTRACT(MONTH FROM date_start::date) insights_month,
-        EXTRACT(QUARTER FROM date_start::date) insights_quarter,
-        EXTRACT(YEAR FROM date_start::date) insights_year,
-
         -- calculated metrics, not safe for data analysis (can not aggregate already calculated weighted averages)
         --  those are safe to use only at the most granular (day) level
         -- we are going to generate those on our own;
         --  bringing them in until we add support for ad hoc calculated metrics in Meltano Analyze
-        cpc as cpc, -- (spend / clicks) | The average cost for each click (all)
-        cpm as cpm, -- (spend / impressions) * 1000 | The average cost for 1,000 impressions.
-        cpp as cpp, -- (spend / reach) * 1000 | The average cost to reach 1,000 people.
-        ctr as ctr, -- (clicks / impressions)  * 100 % | The percentage of times people saw your ad and performed a click
-        unique_ctr as unique_ctr, -- (unique_clicks / reach)  * 100 %
-        frequency as frequency -- (impressions / reach) | The average number of times each person saw your ad.
+
+        -- cpc = (spend / clicks) | The average cost for each click (all)
+        cpc as cpc,
+
+        -- cpm = (spend / impressions) * 1000 | The average cost for 1,000 impressions.
+        cpm as cpm,
+
+        -- cpp = (spend / reach) * 1000 | The average cost to reach 1,000 people.
+        cpp as cpp,
+
+        -- ctr = (clicks / impressions)  * 100 % | The percentage of times people saw your ad and performed a click
+        ctr as ctr,
+
+        -- unique_ctr = (unique_clicks / reach)  * 100 %
+        unique_ctr as unique_ctr,
+
+        -- frequency = (impressions / reach) | The average number of times each person saw your ad.
+        frequency as frequency
 
 {%- endmacro -%}

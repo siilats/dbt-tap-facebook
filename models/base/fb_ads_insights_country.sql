@@ -15,7 +15,10 @@ renamed as (
         country as country,
 
         -- Metrics common in all Ads Insights Tables
-        {{ tap_facebook.ads_insights_metrics() }}
+        {{ tap_facebook.ads_insights_metrics() }},
+
+        -- Date parts for easy grouping
+        {{ tap_facebook.ads_insights_date_parts() }}
 
     from source
 
