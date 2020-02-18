@@ -23,10 +23,15 @@ select
   clicks,
   round((1.0 * clicks / NULLIF(impressions, 0)) * 100, 2) as ctr,
 
+  inline_link_clicks as inline_clicks,
+  round((1.0 * inline_link_clicks / NULLIF(impressions, 0)) * 100, 2) as inline_ctr,
+
   results,
 
   -- Result Rate from Click: ((Results / Click) * 100) %
-  round((1.0 * results / NULLIF(clicks, 0)) * 100, 2) as result_rate_from_clicks
+  round((1.0 * results / NULLIF(clicks, 0)) * 100, 2) as results_from_clicks,
+
+  round((1.0 * results / NULLIF(inline_link_clicks, 0)) * 100, 2) as results_from_inline_clicks
 
 from ads_insights
 

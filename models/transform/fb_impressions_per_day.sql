@@ -23,8 +23,6 @@ select
 
 from ads_insights
 
-where impressions > 0
-
 order by
   insights_date,
   ad_name,

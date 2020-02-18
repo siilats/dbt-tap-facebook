@@ -20,11 +20,15 @@ select
 
   round((1.0 * clicks / NULLIF(impressions, 0))  * 100, 2) as ctr,
 
-  round(spend / NULLIF(clicks, 0), 2) as cpc
+  round(spend / NULLIF(clicks, 0), 2) as cpc,
+
+  inline_link_clicks as inline_clicks,
+
+  round((1.0 * inline_link_clicks / NULLIF(impressions, 0))  * 100, 2) as inline_ctr,
+
+  round(spend / NULLIF(inline_link_clicks, 0), 2) as inline_cpc
 
 from ads_insights
-
-where clicks > 0
 
 order by
   insights_date,

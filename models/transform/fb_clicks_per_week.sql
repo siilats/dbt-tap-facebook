@@ -31,7 +31,13 @@ select
 
   round((1.0 * SUM(clicks) / NULLIF(SUM(impressions), 0))  * 100, 2) as ctr,
 
-  round(SUM(spend) / NULLIF(SUM(clicks), 0), 2) as cpc
+  round(SUM(spend) / NULLIF(SUM(clicks), 0), 2) as cpc,
+
+  SUM(inline_link_clicks) as inline_clicks,
+
+  round((1.0 * SUM(inline_link_clicks) / NULLIF(SUM(impressions), 0))  * 100, 2) as inline_ctr,
+
+  round(SUM(spend) / NULLIF(SUM(inline_link_clicks), 0), 2) as inline_cpc
 
 from ads_insights
 
@@ -42,8 +48,6 @@ group by
   campaign_name,
   adset_name,
   ad_name
-
-having SUM(clicks) > 0
 
 order by
   insights_iso_year,

@@ -33,6 +33,8 @@ select
 
   round(SUM(spend) / NULLIF(SUM(clicks), 0), 2) as cpc,
 
+  round(SUM(spend) / NULLIF(SUM(inline_link_clicks), 0), 2) as inline_cpc,
+
   -- Cost Per Result: Spend / Results
   round(SUM(spend) / NULLIF(SUM(results), 0), 2) as cost_per_result
 

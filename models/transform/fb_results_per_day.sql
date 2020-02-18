@@ -19,7 +19,9 @@ select
   results,
 
   -- Result Rate from Click: ((Results / Click) * 100) %
-  round((1.0 * results / NULLIF(clicks, 0)) * 100, 2) as result_rate_from_clicks,
+  round((1.0 * results / NULLIF(clicks, 0)) * 100, 2) as results_from_clicks,
+
+  round((1.0 * results / NULLIF(inline_link_clicks, 0)) * 100, 2) as results_from_inline_clicks,
 
   -- Cost Per Result: Spend / Results
   round(spend / NULLIF(results, 0), 2) as cost_per_result
