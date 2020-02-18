@@ -24,8 +24,6 @@ select
 
 from ads_insights
 
-where clicks > 0
-
 order by
   insights_date,
   ad_name,

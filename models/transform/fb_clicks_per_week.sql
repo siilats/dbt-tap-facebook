@@ -43,8 +43,6 @@ group by
   adset_name,
   ad_name
 
-having SUM(clicks) > 0
-
 order by
   insights_iso_year,
   insights_week,

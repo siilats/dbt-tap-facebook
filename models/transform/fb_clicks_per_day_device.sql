@@ -33,6 +33,7 @@ group by
   insights_date,
   impression_device
 
+-- Skip the groups that have no clicks
 having SUM(clicks) > 0
 
 order by

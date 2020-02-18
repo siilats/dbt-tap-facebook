@@ -52,8 +52,6 @@ group by
   adset_name,
   ad_name
 
-having SUM(impressions) > 0
-
 order by
   insights_iso_year,
   insights_week,

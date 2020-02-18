@@ -33,6 +33,7 @@ group by
   insights_date,
   publisher_platform
 
+-- Skip the groups that have no clicks
 having SUM(clicks) > 0
 
 order by

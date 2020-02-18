@@ -39,8 +39,6 @@ group by
   adset_name,
   ad_name
 
-having SUM(clicks) > 0
-
 order by
   insights_year,
   insights_month,
