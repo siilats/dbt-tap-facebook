@@ -38,7 +38,7 @@ select
   -- Result Rate from Click: ((Results / Click) * 100) %
   round((1.0 * SUM(results) / NULLIF(SUM(clicks), 0)) * 100, 2) as results_from_clicks,
 
-  round((1.0 * SUM(results) / NULLIF(SUM(inline_link_clicks), 0)) * 100, 2) as inline_results_from_clicks
+  round((1.0 * SUM(results) / NULLIF(SUM(inline_link_clicks), 0)) * 100, 2) as results_from_inline_clicks
 
 from ads_insights
 
