@@ -22,10 +22,10 @@ select
 
   round(spend / NULLIF(clicks, 0), 2) as cpc,
 
+  round(spend / NULLIF(inline_link_clicks, 0), 2) as inline_cpc,
+
   -- Cost Per Result: Spend / Results
   round(spend / NULLIF(results, 0), 2) as cost_per_result
-
-
 
 from ads_insights
 
