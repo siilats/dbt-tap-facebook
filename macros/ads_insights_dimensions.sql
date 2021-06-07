@@ -1,7 +1,7 @@
 {%- macro ads_insights_dimensions() -%}
 
-        nullif(account_id,'') as account_id,
-        account_name as account_name,
+        max(nullif(account_id,'')) as account_id,
+        max(account_name) as account_name,
 
         -- PKEY
 
