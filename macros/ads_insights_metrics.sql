@@ -44,7 +44,7 @@
                             then action_elements::json->>'action_type' = 'rsvp'
                         when objective = 'VIDEO_VIEWS'
                             then action_elements::json->>'action_type' = 'video_view'
-                        when objective = 'LEAD_GENERATION'
+                        when objective = 'LEAD_GENERATION' or objective = 'CONVERSIONS' or objective is null
                             then action_elements::json->>'action_type' = 'lead'
                         when objective = 'MESSAGES'
                             then action_elements::json->>'action_type' = 'onsite_conversion.messaging_conversation_started_7d'
@@ -56,7 +56,7 @@
             case
                 when objective in (
                         'LINK_CLICKS', 'PAGE_LIKES', 'POST_ENGAGEMENT', 'APP_INSTALLS',
-                        'EVENT_RESPONSES', 'VIDEO_VIEWS', 'LEAD_GENERATION', 'MESSAGES'
+                        'EVENT_RESPONSES', 'VIDEO_VIEWS', 'LEAD_GENERATION', 'MESSAGES','CONVERSIONS'
                     )
                     then 0.0
                 else
