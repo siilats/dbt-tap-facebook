@@ -82,6 +82,7 @@
         {{ tap_facebook.action_metric('video_view',         'actions_video_views') }},
         {{ tap_facebook.action_metric('lead',               'actions_leads') }},
         {{ tap_facebook.action_metric('onsite_conversion.messaging_conversation_started_7d', 'actions_messages') }},
+        {{ tap_facebook.conversion_metric('start_trial_website',               'conversions_start_trial_website') }},
 
         -- calculated metrics, not safe for data analysis (can not aggregate already calculated weighted averages)
         --  those are safe to use only at the most granular (day) level
