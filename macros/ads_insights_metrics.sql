@@ -83,8 +83,11 @@
         {{ tap_facebook.action_metric('lead',               'actions_leads') }},
         {{ tap_facebook.action_metric('onsite_conversion.messaging_conversation_started_7d', 'actions_messages') }},
         {{ tap_facebook.action_metric('offsite_conversion.fb_pixel_lead', 'actions_fb_pixel_lead') }},
+        {{ tap_facebook.action_metric('landing_page_view', 'actions_landing_page_view') }},
+        {{ tap_facebook.action_metric('offsite_conversion.fb_pixel_view_content', 'actions_fb_pixel_view_content') }},
         {{ tap_facebook.conversion_metric('start_trial_website',               'conversions_start_trial_website') }},
-
+        {{ tap_facebook.conversion_metric('offsite_conversion.fb_pixel_custom',               'conversions_custom') }},
+        {{ tap_facebook.conversion_metric('offsite_conversion.custom.2552606968376837',               'conversions_custom_2552606968376837') }},
         -- calculated metrics, not safe for data analysis (can not aggregate already calculated weighted averages)
         --  those are safe to use only at the most granular (day) level
         -- we are going to generate those on our own;
