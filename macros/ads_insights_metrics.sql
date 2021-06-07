@@ -4,7 +4,7 @@
         social_spend as social_spend, -- The total amount you've spent so far for your ads showed with social information.
 
         clicks as clicks, -- The number of clicks on your ads.
-        -- unique_clicks as unique_clicks, -- The number of people who performed a click (all).
+        unique_clicks as unique_clicks, -- The number of people who performed a click (all).
 
         impressions as impressions, -- The number of times your ads were on screen.
         reach as reach, -- The number of people who saw your ads at least once.
