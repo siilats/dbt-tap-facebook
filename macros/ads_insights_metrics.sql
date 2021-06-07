@@ -45,7 +45,7 @@
                         when objective = 'VIDEO_VIEWS'
                             then action_elements::json->>'action_type' = 'video_view'
                         when objective = 'LEAD_GENERATION' or objective = 'CONVERSIONS' or objective is null
-                            then action_elements::json->>'action_type' = 'lead'
+                            then action_elements::json->>'action_type' = 'offsite_conversion.fb_pixel_lead'
                         when objective = 'MESSAGES'
                             then action_elements::json->>'action_type' = 'onsite_conversion.messaging_conversation_started_7d'
                     end
