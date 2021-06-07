@@ -3,7 +3,7 @@
 	    coalesce(
 	    (
 	        SELECT
-	            SUM((conversions::json->>'value')::numeric)
+	            SUM((action_elements::json->>'value')::numeric)
 	        FROM
 	            jsonb_array_elements(actions) action_elements
 	        WHERE action_elements::json->>'action_type' = '{{ action_type }}'
