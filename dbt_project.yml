@@ -1,6 +1,10 @@
 name: 'tap_facebook'
 version: '0.0.10'
 config-version: 2
+vars:
+  tap_facebook:
+    # the schema where the raw Facebook Ads tables are located:
+    schema: facebook
 
 source-paths: ["models"]     # paths with source code to compile
 analysis-paths: ["analysis"] # path with analysis files which are compiled, but not run
@@ -16,6 +20,3 @@ models:
       materialized: table
     transform:
       materialized: table
-
-    vars:
-      schema:                # the schema where the raw Facebook Ads tables are located
